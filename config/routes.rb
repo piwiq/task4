@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   #get 'books/show'
   #get 'books/edit'
   #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-  resources :books, only:[:create, :index, :show, :edit, :destroy, :update]
+  resources :books, only:[:create, :index, :show, :edit, :destroy, :update] do
+    resource :favorites, only:[:create, :destroy]
+    resources :book_comments, only:[:create, :destroy]
+  end
 
 
   #get 'users/index'

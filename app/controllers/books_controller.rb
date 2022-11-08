@@ -23,7 +23,8 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book_new=Book.new
+    @book_new=Book.new#新規投稿受付用
+    @book_comment = BookComment.new#新規コメント受付用
     @book=Book.find(params[:id])
     @user=@book.user
   end
@@ -53,7 +54,7 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-  
+
   def correct_user
     @book=Book.find(params[:id])
     @user=@book.user
